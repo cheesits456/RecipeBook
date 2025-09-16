@@ -146,7 +146,7 @@ function showCreate() {
 
 // Display recipes for a certain mealtype
 function showRecipes(mealType) {
-	document.title = `ResipeBook - ${mealType}`
+	document.title = `RecipeBook - ${mealType}`
 	document.getElementById("create-button").style.display = "none";
 
 	let mainHtml = `
