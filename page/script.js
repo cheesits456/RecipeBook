@@ -186,21 +186,21 @@ function showRecipes(mealType) {
 			mainHtml += `
 				<div class="row">
 					<div class="col-md-12">
-					<div class="card">
-						<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="card-text">${recipe.servings} serving${recipe.servings === 1 ? "" : "s"}</div>
-								</div>
-								<div class="col-md-6">
-									<div class="card-text">${dietaryRestrictions}</div>
+						<div class="card">
+							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="card-text">${recipe.servings} serving${recipe.servings === 1 ? "" : "s"}</div>
+									</div>
+									<div class="col-md-6">
+										<div class="card-text">${dietaryRestrictions}</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			`
 		};
 
