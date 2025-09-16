@@ -1,0 +1,20 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "Digital recipe book",
+  "license": "GPL-3.0",
+  "author": "cheesits456",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "compile": "electron-packager . RecipeBook --all --overwrite --out ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "os": "^0.1.2"
+  }
+}

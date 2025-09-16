@@ -1,0 +1,317 @@
+/* Importing Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	min-height: 100vh;
+	background: #F0F4FF;
+}
+
+ol,
+ul {
+	padding-left: 0px;
+}
+
+.size-13 {
+	font-size: 13pt;
+}
+
+.size-30 {
+	font-size: 30pt;
+}
+
+.weight-600 {
+	font-weight: 600;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+main {
+	margin-left: 260px;
+	padding: 1rem;
+}
+
+.landing-header {
+	margin-top: 14%;
+	text-align: center;
+}
+
+.landing-header div {
+	font-size: 14pt;
+}
+
+.landing-body {
+	margin-top: 4rem;
+	text-align: center;
+}
+
+.landing-body div {
+	padding-top: 1rem;
+}
+
+.hover-default:hover {
+	cursor: default;
+}
+
+.hover-pointer:hover {
+	cursor: pointer;
+}
+
+h2 a {
+	color: white;
+	text-decoration: none;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 260px;
+	display: flex;
+	overflow-x: hidden;
+	flex-direction: column;
+	background: #161a2d;
+	padding: 25px 20px;
+	transition: all 0.4s ease;
+	border-radius: 0 1rem 1rem 0;
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0);
+}
+
+.sidebar .sidebar-header {
+	display: flex;
+	align-items: center;
+}
+
+.sidebar .sidebar-header img {
+	width: 42px;
+	border-radius: 50%;
+}
+
+.sidebar .sidebar-header h1 {
+	color: #fff;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.sidebar-links h4 {
+	color: #fff;
+	font-weight: 500;
+	white-space: nowrap;
+	margin: 10px 0;
+	position: relative;
+}
+
+.sidebar-links h4 span {
+	opacity: 0;
+}
+
+.sidebar:hover .sidebar-links h4 span {
+	opacity: 1;
+}
+
+.sidebar-links .menu-separator {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	height: 1px;
+	transform: scaleX(1);
+	transform: translateY(-50%);
+	background: #4f52ba;
+	transform-origin: right;
+	transition-delay: 0.2s;
+}
+
+.sidebar:hover .sidebar-links .menu-separator {
+	transition-delay: 0s;
+	transform: scaleX(0);
+}
+
+.sidebar-links {
+	list-style: none;
+	margin-top: 20px;
+	padding-right: 5px;
+	height: 100%;
+	overflow-y: auto;
+	scrollbar-width: 5px;
+}
+
+.sidebar-links li a {
+	display: flex;
+	align-items: center;
+	gap: 0 20px;
+	color: #fff;
+	font-weight: 500;
+	white-space: nowrap;
+	padding: 15px 10px;
+	text-decoration: none;
+	transition: 0.2s ease;
+}
+
+.sidebar-links li a:hover {
+	color: #161a2d;
+	background: #fff;
+	border-radius: 4px;
+}
+
+.user-account {
+	margin-top: auto;
+	padding: 12px 10px;
+	margin-left: -10px;
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	color: #161a2d;
+}
+
+.user-profile img {
+	width: 42px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+}
+
+.user-detail {
+	width: 100%;
+	white-space: nowrap;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.sidebar .user-account {
+	background: #fff;
+	border-radius: 4px;
+}
+
+.create-button {
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 1rem;
+	padding: 1rem;
+	background-color: #353577;
+	color: white;
+	border-radius: 1rem;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 0px 5px 0px black;
+}
+
+.create-button:hover {
+	background-color: #4f52ba;
+}
+
+.create-button:active {
+	background-color: #353577;
+}
+
+.create-button-padding {
+	padding-bottom: 1rem;
+}
+
+.form {
+	border: 1px solid #ccc;
+	height: 100%;
+	padding: 1rem;
+	border-radius: 0.75rem;
+}
+
+input {
+	padding: 0.25rem;
+	width: 100%;
+}
+
+input:focus-visible {
+	outline: #4f52ba auto 1px;
+}
+
+textarea {
+	padding: 0.25rem;
+	width: 100%;
+	resize: none;
+	height: 5rem;
+}
+
+textarea:focus-visible {
+	outline: #4f52ba auto 1px;
+}
+
+.height-10 {
+	height: 10rem;
+}
+
+.form-check-input {
+	border: 1px solid rgb(118, 118, 118);
+}
+
+.form-check-input:checked {
+	background-color: #4f52ba;
+	border-color: #4f52ba;
+}
+
+.form-check-input:focus {
+	box-shadow: none;
+	border: 2px solid #4f52ba;
+}
+
+.button {
+	width: 100%;
+	background-color: #353577;
+	padding: 0.5rem;
+	color: white;
+	text-align: center;
+	border-radius: 0.5rem;
+	box-shadow: 0px 0px 5px 0px black;
+}
+
+.button:hover {
+	background-color: #4f52ba;
+	cursor: pointer;
+}
+
+.button:active {
+	background-color: #353577;
+}
+
+.card {
+	margin-top: 1rem;
+}
+
+.card-header {
+	font-size: 14pt;
+	color: #4f52ba;
+	text-decoration: underline;
+}
+
+.card-text {
+	padding: 0.75rem;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #1f2049;
+	border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #4f52ba;
+	border-radius: 5px;
+}

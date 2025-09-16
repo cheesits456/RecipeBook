@@ -1,0 +1,346 @@
+const fs = require("fs");
+const path = require("path");
+
+const os = require("os");
+
+process.chdir(__dirname);
+
+// Set variable for recipe directory and create the folder if it doesn't exist
+const recipeDirectory = path.join(os.homedir(), "Documents", "Recipes");
+if (!fs.existsSync(recipeDirectory)) fs.mkdir(recipeDirectory, null, () => { });
+
+// Set the copyright year
+document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
+
+// Compile a list of meal types and set a sidebar link for each one
+const fileNames = fs.readdirSync(recipeDirectory);
+let mealTypes = []
+for (const fileName of fileNames) {
+	let recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+	console.log(recipe);
+	for (const mealType of recipe.mealType) {
+		if (!mealTypes.includes(capitalize(mealType))) mealTypes.push(capitalize(mealType));
+	};
+};
+mealTypes.sort();
+let sidebarHtml = "";
+for (const mealType of mealTypes) {
+	sidebarHtml += `
+		<li onclick="showRecipes('${mealType.replace(/'/g, "\\'")}')">
+			<a href="#">${mealType}</a>
+		</li>
+	`;
+}
+document.getElementById("mealTypes").innerHTML = sidebarHtml;
+
+// Display the landing page
+showMain();
+
+
+
+// FUNCTIONS
+// Return a capitalized string
+function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+
+// Display the landing page
+function showMain() {
+	document.title = "RecipeBook";
+	document.getElementById("create-button").style.display = "flex";
+	const mainHtml = `
+		<div class="landing-header">
+			<h1>Welcome to RecipeBook</h1>
+			<div>Your virtual cookbook</div>
+		</div>
+		<div class="landing-body">
+			<div class="size-13">Browse recipe categories on the left</div>
+			<div>or</div>
+			<div class="size-13">Create a new recipe with the button in the corner</div>
+		</div>
+	`;
+	document.getElementById("main").innerHTML = mainHtml;
+};
+
+
+// Display the Create New Recipe page
+function showCreate() {
+	document.title = "RecipeBook - Create New Recipe";
+	document.getElementById("create-button").style.display = "none";
+	const mainHtml = `
+		<div class="container">
+			<div class="row">
+				<h1>Create New Recipe</h1>
+			</div>
+			<div class="row">
+				<form class="form">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<label for="recipe-title">Recipe Title:</label><br>
+								<input type="text" id="recipe-title" name="recipe-title" placeholder="Eggs and Bacon">
+							</div>
+							<div class="col-md-6">
+								<label for="recipe-servings">Servings:</label><br>
+								<input type="number" id="recipe-servings" name="recipe-servings" placeholder="1" value="1" min="1">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="recipe-types">
+									Recipe Categories: &nbsp;<span style="font-size:9pt">(one per line)</span>
+								</label><br>
+								<textarea id="recipe-types" placeholder="Breakfast&NewLine;Fingerfood"></textarea>
+							</div>
+							<div class="col-md-6">
+								<label for="recipe-restrictions">Dietary Restrictions:</label><br><br>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-6">
+											<label for="recipe-vegetarian" class="form-check-label hover-pointer">Vegetarian:</label>
+											<input type="checkbox" id="recipe-vegetarian" class="form-check-input hover-pointer" name="recipe-vegetarian"><br>
+											<label for="recipe-vegan" class="form-check-label hover-pointer">Vegan:</label>
+											<input type="checkbox" id="recipe-vegan" class="form-check-input hover-pointer" name="recipe-vegan">
+										</div>
+										<div class="col-md-6">
+											<label for="recipe-gluten" class="form-check-label hover-pointer">Gluten Free:</label>
+											<input type="checkbox" id="recipe-gluten" class="form-check-input hover-pointer" name="recipe-gluten"><br>
+											<label for="recipe-dairy" class="form-check-label hover-pointer">Dairy Free:</label>
+											<input type="checkbox" id="recipe-dairy" class="form-check-input hover-pointer" name="recipe-dairy">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="recipe-ingredients">
+									Ingredients: &nbsp;<span style="font-size:9pt">(one per line)</span>
+								</label><br>
+								<textarea id="recipe-ingredients" class="height-10" placeholder="2 Eggs&NewLine;2 Slices of bacon"></textarea>
+							</div>
+							<div class="col-md-6">
+								<label for="recipe-directions">
+									Directions: &nbsp;<span style="font-size:9pt">(one per line)</span>
+								</label><br>
+								<textarea id="recipe-directions" class="height-10" placeholder="Crack eggs into skillet and cook how desired&NewLine;Put bacon into second skillet and cook until done&NewLine;Place eggs and bacon onto a plate and serve"></textarea>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="button" onclick="createNewRecipe()">Create New Recipe</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	`;
+	document.getElementById("main").innerHTML = mainHtml;
+};
+
+
+// Display recipes for a certain mealtype
+function showRecipes(mealType) {
+	document.title = `ResipeBook - ${mealType}`
+	document.getElementById("create-button").style.display = "none";
+
+	let mainHtml = `
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>${mealType}</h1>
+				</div>
+			</div>
+	`;
+
+	const fileNames = fs.readdirSync(recipeDirectory);
+	for (const fileName of fileNames) {
+		const recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+		let match = false;
+
+		for (const type of recipe.mealType) {
+			if (type.toLowerCase() === mealType.toLowerCase()) match = true;
+		};
+
+
+		if (match === true) {
+			let dietaryRestrictions = [];
+
+			if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
+			if (recipe.dietaryRestrictions.vegan) dietaryRestrictions.push("Vegan");
+			if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
+			if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
+
+			dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "None";
+
+			mainHtml += `
+				<div class="row">
+					<div class="col-md-12">
+					<div class="card">
+						<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="card-text"><span class="weight-600">Servings:</span> ${recipe.servings}</div>
+								</div>
+								<div class="col-md-8">
+									<div class="card-text"><span class="weight-600">Dietary Restrictions:</span> ${dietaryRestrictions}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			`
+		};
+
+	};
+
+	mainHtml += `</div>`;
+
+	document.getElementById("main").innerHTML = mainHtml;
+};
+
+
+function showRecipePage(path) {
+	document.getElementById("create-button").style.display = "none";
+
+	const recipe = JSON.parse(fs.readFileSync(path));
+
+	document.title = `ResipeBook - ${recipe.title}`
+
+	let dietaryRestrictions = [];
+
+	if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
+	if (recipe.dietaryRestrictions.vegan) dietaryRestrictions.push("Vegan");
+	if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
+	if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
+
+	dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "None";
+
+	let mainHtml = `
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>${recipe.title}</h1>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-md-4">
+					<div><span class="weight-600">Servings:</span> ${recipe.servings}</div>
+				</div>
+				<div class="col-md-8">
+					<div><span class="weight-600">Dietary Restrictions:</span> ${dietaryRestrictions}</div>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="weight-600">Ingredients:</div>
+			</div>
+			<div class="row">
+	`
+
+	for (const ingredient of recipe.ingredients) {
+		mainHtml += `
+			<div class="col-md-1">
+				<center>
+					<input id="ingredient-${recipe.ingredients.indexOf(ingredient)}" class="form-check-input hover-pointer" type="checkbox">
+				</center>
+			</div>
+			<div class="col-md-11">
+				<label for="ingredient-${recipe.ingredients.indexOf(ingredient)}" class="hover-pointer">${ingredient
+					.replace(/1\/2/g, "½")
+					.replace(/1\/3/g, "⅓")
+					.replace(/1\/4/g, "¼")
+					.replace(/1\/5/g, "⅕")
+					.replace(/1\/6/g, "⅙")
+					.replace(/1\/7/g, "⅐")
+					.replace(/1\/8/g, "⅛")
+					.replace(/1\/9/g, "⅑")
+					.replace(/1\/10/g, "⅒")
+					.replace(/2\/3/g, "⅔")
+					.replace(/2\/5/g, "⅖")
+					.replace(/3\/5/g, "⅗")
+					.replace(/3\/8/g, "⅜")
+					.replace(/4\/5/g, "⅘")
+					.replace(/3\/4/g, "¾")
+					.replace(/5\/6/g, "⅚")
+					.replace(/5\/8/g, "⅝")
+					.replace(/7\/8/g, "⅞")
+				}</label>
+			</div>
+		`
+	};
+	mainHtml += `
+		</div><br>
+		<div class="row">
+			<div class="weight-600">Directions:</div>
+		</div>
+		<div class="row">
+	`;
+	for (const step of recipe.instructions) {
+		mainHtml += `
+			<div class="col-md-1">
+				<center>
+					<input id="step-${recipe.instructions.indexOf(step)}" class="form-check-input hover-pointer" type="checkbox">
+				</center>
+			</div>
+			<div class="col-md-11">
+				<label for="step-${recipe.instructions.indexOf(step)}" class="hover-pointer">${step}</label>
+			</div>
+		`
+	};
+
+	mainHtml += `
+			</div>
+		</div>
+	`
+	document.getElementById("main").innerHTML = mainHtml;
+};
+
+
+// Save new recipe to file
+function createNewRecipe() {
+	let ids = [
+		"recipe-title",
+		"recipe-servings",
+		"recipe-types",
+		"recipe-ingredients",
+		"recipe-directions"
+	];
+	let error = false;
+
+	// validate form
+	for (const id of ids) {
+		let element = document.getElementById(id);
+		if (!element.value) {
+			error = true;
+			element.style.outline = "rgba(230, 0, 0, 0.7) auto 1px";
+		} else element.style.outline = "none";
+	};
+	if (error === true) return;
+
+	// build data structure
+	let recipe = {
+		title: document.getElementById("recipe-title").value,
+		servings: Number(document.getElementById("recipe-servings").value),
+		mealType: document.getElementById("recipe-types").value.split("\n"),
+		dietaryRestrictions: {
+			vegetarian: document.getElementById("recipe-vegetarian").checked,
+			vegan: document.getElementById("recipe-vegan").checked,
+			glutenFree: document.getElementById("recipe-gluten").checked,
+			dairyFree: document.getElementById("recipe-dairy").checked
+		},
+		ingredients: document.getElementById("recipe-ingredients").value.split("\n"),
+		instructions: document.getElementById("recipe-directions").value.split("\n")
+	};
+
+	// write file and reload page
+	fs.writeFileSync(path.join(recipeDirectory, `${recipe.title}.recipe`), JSON.stringify(recipe, null, "\t"));
+	alert("Recipe saved successfully");
+	location.reload();
+};
