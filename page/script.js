@@ -98,17 +98,21 @@ function showCreate() {
 								<label for="recipe-restrictions">Dietary Restrictions:</label><br><br>
 								<div class="container">
 									<div class="row">
-										<div class="col-md-6">
-											<label for="recipe-vegetarian" class="form-check-label hover-pointer">Vegetarian:</label>
+										<div class="col-md-1">
 											<input type="checkbox" id="recipe-vegetarian" class="form-check-input hover-pointer" name="recipe-vegetarian"><br>
-											<label for="recipe-vegan" class="form-check-label hover-pointer">Vegan:</label>
 											<input type="checkbox" id="recipe-vegan" class="form-check-input hover-pointer" name="recipe-vegan">
 										</div>
-										<div class="col-md-6">
-											<label for="recipe-gluten" class="form-check-label hover-pointer">Gluten Free:</label>
+										<div class="col-md-5">
+											<label for="recipe-vegetarian" class="form-check-label hover-pointer">Vegetarian</label><br>
+											<label for="recipe-vegan" class="form-check-label hover-pointer">Vegan</label>
+										</div>
+										<div class="col-md-1">
 											<input type="checkbox" id="recipe-gluten" class="form-check-input hover-pointer" name="recipe-gluten"><br>
-											<label for="recipe-dairy" class="form-check-label hover-pointer">Dairy Free:</label>
 											<input type="checkbox" id="recipe-dairy" class="form-check-input hover-pointer" name="recipe-dairy">
+										</div>
+										<div class="col-md-5">
+											<label for="recipe-gluten" class="form-check-label hover-pointer">Gluten Free</label><br>
+											<label for="recipe-dairy" class="form-check-label hover-pointer">Dairy Free</label>
 										</div>
 									</div>
 								</div>
