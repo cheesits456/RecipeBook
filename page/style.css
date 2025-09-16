@@ -294,6 +294,10 @@ textarea:focus-visible {
 	text-decoration: underline;
 }
 
+.card-header:active {
+	color: #353577;
+}
+
 .card-text {
 	padding: 0.75rem;
 }
