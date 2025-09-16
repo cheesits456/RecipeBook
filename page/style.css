@@ -286,12 +286,12 @@ textarea:focus-visible {
 
 .card {
 	margin-top: 1rem;
-	background-color: #161a2d33;
+	background-color: #161a2d22;
 }
 
 .card-header {
 	font-size: 14pt;
-	background-color: #4f52ba33;
+	background-color: #4f52ba22;
 }
 
 .card-header:hover {
