@@ -176,7 +176,7 @@ function showRecipes(mealType) {
 			if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
 			if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
 
-			dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "None";
+			dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "";
 
 			mainHtml += `
 				<div class="row">
@@ -185,11 +185,11 @@ function showRecipes(mealType) {
 						<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
 						<div class="container">
 							<div class="row">
-								<div class="col-md-4">
-									<div class="card-text"><span class="weight-600">Servings:</span> ${recipe.servings}</div>
+								<div class="col-md-6">
+									<div class="card-text">${recipe.servings} serving${recipe.servings === 1 ? "" : "s"}</div>
 								</div>
-								<div class="col-md-8">
-									<div class="card-text"><span class="weight-600">Dietary Restrictions:</span> ${dietaryRestrictions}</div>
+								<div class="col-md-6">
+									<div class="card-text">${dietaryRestrictions}</div>
 								</div>
 							</div>
 						</div>
