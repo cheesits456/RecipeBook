@@ -1,1 +1,4 @@
-Run with `electron .` or compile with `npm run compile`
+Install dejpendencies with `npm i` then:
+
+- Run with `electron .`
+- Compile with `npm run compile`
