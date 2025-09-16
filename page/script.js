@@ -154,6 +154,7 @@ function showRecipes(mealType) {
 			<div class="row">
 				<div class="col-md-12">
 					<h1>${mealType}</h1>
+					<hr>
 				</div>
 			</div>
 	`;
