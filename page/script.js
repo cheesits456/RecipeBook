@@ -16,8 +16,12 @@ document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 const fileNames = fs.readdirSync(recipeDirectory);
 let mealTypes = []
 for (const fileName of fileNames) {
-	let recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
-	console.log(recipe);
+	let recipe = {};
+	try {
+		recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+	} catch { };
+	if (!recipe.mealType) continue;
+
 	for (const mealType of recipe.mealType) {
 		if (!mealTypes.includes(capitalize(mealType))) mealTypes.push(capitalize(mealType));
 	};
@@ -165,9 +169,13 @@ function showRecipes(mealType) {
 
 	const fileNames = fs.readdirSync(recipeDirectory);
 	for (const fileName of fileNames) {
-		const recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+		let recipe = {};
+		try {
+			recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+		} catch { };
+		if (!recipe.mealType) continue;
+		
 		let match = false;
-
 		for (const type of recipe.mealType) {
 			if (type.toLowerCase() === mealType.toLowerCase()) match = true;
 		};
