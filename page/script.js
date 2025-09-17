@@ -12,30 +12,7 @@ if (!fs.existsSync(recipeDirectory)) fs.mkdir(recipeDirectory, null, () => { });
 // Set the copyright year
 document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 
-// Compile a list of meal types and set a sidebar link for each one
-const fileNames = fs.readdirSync(recipeDirectory);
-let mealTypes = []
-for (const fileName of fileNames) {
-	let recipe = {};
-	try {
-		recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
-	} catch { };
-	if (!recipe.mealType) continue;
-
-	for (const mealType of recipe.mealType) {
-		if (!mealTypes.includes(capitalize(mealType))) mealTypes.push(capitalize(mealType));
-	};
-};
-mealTypes.sort();
-let sidebarHtml = "";
-for (const mealType of mealTypes) {
-	sidebarHtml += `
-		<li onclick="showRecipes('${mealType.replace(/'/g, "\\'")}')">
-			<a href="#">${mealType}</a>
-		</li>
-	`;
-}
-document.getElementById("mealTypes").innerHTML = sidebarHtml;
+updateSidebar();
 
 // Display the landing page
 showMain();
@@ -47,6 +24,34 @@ showMain();
 function capitalize(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+
+// Compile a list of meal types and set a sidebar link for each one
+function updateSidebar() {
+	const fileNames = fs.readdirSync(recipeDirectory);
+	let mealTypes = []
+	for (const fileName of fileNames) {
+		let recipe = {};
+		try {
+			recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+		} catch { };
+		if (!recipe.mealType) continue;
+
+		for (const mealType of recipe.mealType) {
+			if (!mealTypes.includes(capitalize(mealType))) mealTypes.push(capitalize(mealType));
+		};
+	};
+	mealTypes.sort();
+	let sidebarHtml = "";
+	for (const mealType of mealTypes) {
+		sidebarHtml += `
+		<li onclick="showRecipes('${mealType.replace(/'/g, "\\'")}')">
+			<a href="#">${mealType}</a>
+		</li>
+	`;
+	}
+	document.getElementById("mealTypes").innerHTML = sidebarHtml;
+}
 
 
 // Display the landing page
