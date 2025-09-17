@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "compile": "electron-packager . RecipeBook --all --overwrite --out ./dist",
+    "compile": "rm ./dist/zipped/* ; echo ; electron-packager . RecipeBook --overwrite --out ./dist --platform linux,win32 && echo && ./compilers/zip-output.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
