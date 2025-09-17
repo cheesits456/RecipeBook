@@ -225,7 +225,7 @@ function showRecipePage(path) {
 
 	const recipe = JSON.parse(fs.readFileSync(path));
 
-	document.title = `ResipeBook - ${recipe.title}`
+	document.title = `RecipeBook - ${recipe.title}`
 
 	let dietaryRestrictions = [];
 
