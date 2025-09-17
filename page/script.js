@@ -211,7 +211,7 @@ function showRecipes(mealType) {
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
-							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName).replace(/\\/g, "\\\\")}')">${recipe.title}</div>
+							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
 							<div class="container">
 								<div class="row">
 									<div class="col-md-6">
@@ -237,6 +237,7 @@ function showRecipes(mealType) {
 
 
 function showRecipePage(recipePath) {
+	recipePath = recipePath.replace(/\\/g, "\\\\");
 	document.getElementById("create-button").style.display = "none";
 
 	const recipe = JSON.parse(fs.readFileSync(recipePath));
