@@ -373,7 +373,7 @@ function createNewRecipe() {
 		instructions: document.getElementById("recipe-directions").value.split("\n")
 	};
 
-	// write file and reload page
+	// write file and update sidebar
 	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`).replace(/\\/g, "\\\\");
 	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
 	$("#saved-modal").modal("toggle");
