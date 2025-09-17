@@ -9,7 +9,8 @@ process.chdir(__dirname);
 const recipeDirectory = path.join(os.homedir(), "Documents", "Recipes");
 if (!fs.existsSync(recipeDirectory)) fs.mkdir(recipeDirectory, null, () => { });
 
-// Set the copyright year
+// Set the copyright year and version number
+document.getElementById("copyright-version").innerHTML = JSON.parse(fs.readFileSync(path.join("..", "package.json").replace(/\\/g, "\\\\"))).version;
 document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 
 updateSidebar();
