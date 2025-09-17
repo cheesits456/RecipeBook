@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
 
+# Remove old compressed archives
 rm ./dist/zipped/* || echo
-electron-packager . RecipeBook --overwrite --out ./dist --platform linux,win32 && echo && ./compilers/zip-output.sh
+
+echo "COMPILATION:"
+# Compile program
+electron-packager . RecipeBook --overwrite --out ./dist --platform linux,win32 && {
+	echo
+	echo "COMPRESSION:"
+	# Compress files to zip archives
+	./compilers/zip-output.sh && {
+		echo
+		echo "Program compiled to './dist/' and compressed to './dist/zipped/'"
+	}
+}
