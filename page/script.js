@@ -211,7 +211,7 @@ function showRecipes(mealType) {
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
-							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName)}')">${recipe.title}</div>
+							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName).replace(/\\/g, "\\\\")}')">${recipe.title}</div>
 							<div class="container">
 								<div class="row">
 									<div class="col-md-6">
@@ -372,7 +372,7 @@ function createNewRecipe() {
 	};
 
 	// write file and reload page
-	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`);
+	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`).replace(/\\/g, "\\\\");
 	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
 	alert("Recipe saved successfully");
 	updateSidebar();
