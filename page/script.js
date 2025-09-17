@@ -234,7 +234,7 @@ function showRecipePage(path) {
 				<div class="col-md-12">
 					<h1>${recipe.title}</h1>
 				</div>
-			</div><br>
+			</div><hr>
 			<div class="row">
 				<div class="col-md-4">
 					<div><span class="weight-600">Servings:</span> ${recipe.servings}</div>
