@@ -375,6 +375,7 @@ function createNewRecipe() {
 	// write file and reload page
 	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`).replace(/\\/g, "\\\\");
 	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
+	$("#saved-modal").modal("toggle");
 	updateSidebar();
 	showRecipePage(recipePath);
 };

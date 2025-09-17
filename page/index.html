@@ -33,6 +33,18 @@
 		<img src="images/plus.png" height="20px"> &nbsp; Create New Recipe
 	</div>
 
+	<div class="modal fade" id="saved-modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">Recipe saved successfully</div>
+				<div class="modal-footer">
+					<div class="edit-button hover-pointer" onclick="$('#saved-modal').modal('toggle')">Okay</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="bootstrap/js/jquery.js" onload="window.$ = window.jQuery = module.exports"></script>
 	<script src="bootstrap/js/bootstrap.js"></script>
 	<script src="script.js"></script>

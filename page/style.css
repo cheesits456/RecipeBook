@@ -325,6 +325,15 @@ textarea:focus-visible {
 	padding: 0.75rem;
 }
 
+.modal-body {
+	padding: 2rem 0 0 2rem;
+	font-size: 14pt;
+}
+
+.modal-footer {
+	border-top: none;
+}
+
 
 /* width */
 ::-webkit-scrollbar {
