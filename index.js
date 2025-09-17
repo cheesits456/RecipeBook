@@ -22,4 +22,4 @@ function createWindow() {
 
 electron.app.whenReady().then(createWindow);
 
-process.on('uncaughtException', console.error);
+process.on("uncaughtException", console.error);
