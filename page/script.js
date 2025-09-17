@@ -74,13 +74,13 @@ function showMain() {
 
 
 // Display the Create New Recipe page
-function showCreate() {
-	document.title = "RecipeBook - Create New Recipe";
+function showCreate(recipe) {
+	document.title = `RecipeBook - ${recipe ? "Edit" : "Create New"} Recipe`;
 	document.getElementById("create-button").style.display = "none";
 	const mainHtml = `
 		<div class="container">
 			<div class="row">
-				<h1>Create New Recipe</h1>
+				<h1>${recipe ? "Edit" : "Create New"} Recipe</h1>
 			</div>
 			<div class="row">
 				<form class="form">
@@ -88,11 +88,11 @@ function showCreate() {
 						<div class="row">
 							<div class="col-md-6">
 								<label for="recipe-title">Recipe Title:</label><br>
-								<input type="text" id="recipe-title" name="recipe-title" placeholder="Eggs and Bacon">
+								<input type="text" id="recipe-title" name="recipe-title" placeholder="Eggs and Bacon" value="${recipe ? recipe.title : ""}">
 							</div>
 							<div class="col-md-6">
 								<label for="recipe-servings">Servings:</label><br>
-								<input type="number" id="recipe-servings" name="recipe-servings" placeholder="1" value="1" min="1">
+								<input type="number" id="recipe-servings" name="recipe-servings" placeholder="1" value="${recipe ? recipe.servings : 1}" min="1">
 							</div>
 						</div>
 						<br>
@@ -146,7 +146,7 @@ function showCreate() {
 					<br>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="button" onclick="createNewRecipe()">Create New Recipe</div>
+							<div class="button" onclick="createNewRecipe()">${recipe ? "Edit" : "Create New"} Recipe</div>
 						</div>
 					</div>
 				</form>
@@ -154,6 +154,17 @@ function showCreate() {
 		</div>
 	`;
 	document.getElementById("main").innerHTML = mainHtml;
+
+	if (recipe) {
+		document.getElementById("recipe-title").setAttribute("disabled", "true");
+		document.getElementById("recipe-types").value = recipe.mealType.join("\n");
+		document.getElementById("recipe-ingredients").value = recipe.ingredients.join("\n");
+		document.getElementById("recipe-directions").value = recipe.instructions.join("\n");
+		if (recipe.dietaryRestrictions.vegetarian) document.getElementById("recipe-vegetarian").setAttribute("checked", "true");
+		if (recipe.dietaryRestrictions.vegan) document.getElementById("recipe-vegan").setAttribute("checked", "true");
+		if (recipe.dietaryRestrictions.glutenFree) document.getElementById("recipe-gluten").setAttribute("checked", "true");
+		if (recipe.dietaryRestrictions.dairyFree) document.getElementById("recipe-dairy").setAttribute("checked", "true");
+	}
 };
 
 
@@ -179,7 +190,7 @@ function showRecipes(mealType) {
 			recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
 		} catch { };
 		if (!recipe.mealType) continue;
-		
+
 		let match = false;
 		for (const type of recipe.mealType) {
 			if (type.toLowerCase() === mealType.toLowerCase()) match = true;
@@ -225,10 +236,10 @@ function showRecipes(mealType) {
 };
 
 
-function showRecipePage(path) {
+function showRecipePage(recipePath) {
 	document.getElementById("create-button").style.display = "none";
 
-	const recipe = JSON.parse(fs.readFileSync(path));
+	const recipe = JSON.parse(fs.readFileSync(recipePath));
 
 	document.title = `RecipeBook - ${recipe.title}`
 
@@ -244,8 +255,11 @@ function showRecipePage(path) {
 	let mainHtml = `
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-10">
 					<h1>${recipe.title}</h1>
+				</div>
+				<div class="col-md-2">
+					<div class="edit-button hover-pointer" onclick="editRecipe('${recipe.title.replace(/'/g, "\\'")}')">Edit</div>
 				</div>
 			</div><hr>
 			<div class="row">
@@ -271,25 +285,25 @@ function showRecipePage(path) {
 			</div>
 			<div class="col-md-11">
 				<label for="ingredient-${recipe.ingredients.indexOf(ingredient)}" class="hover-pointer">${ingredient
-					.replace(/1\/2/g, "½")
-					.replace(/1\/3/g, "⅓")
-					.replace(/1\/4/g, "¼")
-					.replace(/1\/5/g, "⅕")
-					.replace(/1\/6/g, "⅙")
-					.replace(/1\/7/g, "⅐")
-					.replace(/1\/8/g, "⅛")
-					.replace(/1\/9/g, "⅑")
-					.replace(/1\/10/g, "⅒")
-					.replace(/2\/3/g, "⅔")
-					.replace(/2\/5/g, "⅖")
-					.replace(/3\/5/g, "⅗")
-					.replace(/3\/8/g, "⅜")
-					.replace(/4\/5/g, "⅘")
-					.replace(/3\/4/g, "¾")
-					.replace(/5\/6/g, "⅚")
-					.replace(/5\/8/g, "⅝")
-					.replace(/7\/8/g, "⅞")
-				}</label>
+				.replace(/1\/2/g, "½")
+				.replace(/1\/3/g, "⅓")
+				.replace(/1\/4/g, "¼")
+				.replace(/1\/5/g, "⅕")
+				.replace(/1\/6/g, "⅙")
+				.replace(/1\/7/g, "⅐")
+				.replace(/1\/8/g, "⅛")
+				.replace(/1\/9/g, "⅑")
+				.replace(/1\/10/g, "⅒")
+				.replace(/2\/3/g, "⅔")
+				.replace(/2\/5/g, "⅖")
+				.replace(/3\/5/g, "⅗")
+				.replace(/3\/8/g, "⅜")
+				.replace(/4\/5/g, "⅘")
+				.replace(/3\/4/g, "¾")
+				.replace(/5\/6/g, "⅚")
+				.replace(/5\/8/g, "⅝")
+				.replace(/7\/8/g, "⅞")
+			}</label>
 			</div>
 		`
 	};
@@ -358,7 +372,15 @@ function createNewRecipe() {
 	};
 
 	// write file and reload page
-	fs.writeFileSync(path.join(recipeDirectory, `${recipe.title}.recipe`), JSON.stringify(recipe, null, "\t"));
+	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`);
+	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
 	alert("Recipe saved successfully");
-	location.reload();
+	updateSidebar();
+	showRecipePage(recipePath);
 };
+
+// Edit an existing recipe
+function editRecipe(title) {
+	const data = JSON.parse(fs.readFileSync(path.join(recipeDirectory, `${title}.recipe`)));
+	showCreate(data);
+}
