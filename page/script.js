@@ -52,7 +52,7 @@ function showMain() {
 	const mainHtml = `
 		<div class="landing-header">
 			<h1>Welcome to RecipeBook</h1>
-			<div>Your virtual cookbook</div>
+			<div>Your digital cookbook</div>
 		</div>
 		<div class="landing-body">
 			<div class="size-13">Browse recipe categories on the left</div>
