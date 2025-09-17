@@ -146,7 +146,7 @@ function showCreate(recipe) {
 					<br>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="button" onclick="createNewRecipe()">${recipe ? "Edit" : "Create New"} Recipe</div>
+							<div class="button" onclick="createNewRecipe()">${recipe ? "Save" : "Create New Recipe"}</div>
 						</div>
 					</div>
 				</form>
