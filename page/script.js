@@ -374,7 +374,7 @@ function createNewRecipe() {
 	};
 
 	// write file and update sidebar
-	const recipePath = path.join(recipeDirectory, `${recipe.title}.recipe`).replace(/\\/g, "\\\\");
+	const recipePath = path.join(recipeDirectory, `${recipe.title.replace(/'/g, "")}.recipe`).replace(/\\/g, "\\\\");
 	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
 	$("#saved-modal").modal("toggle");
 	updateSidebar();
