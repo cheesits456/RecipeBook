@@ -305,7 +305,7 @@ function showRecipePage(recipePath) {
 				</center>
 			</div>
 			<div class="col-md-11">
-				<label for="step-${recipe.instructions.indexOf(step)}" class="hover-pointer">${step}</label>
+				<label for="step-${recipe.instructions.indexOf(step)}" class="hover-pointer">${replaceFractions(step)}</label>
 			</div>
 		`
 	};
