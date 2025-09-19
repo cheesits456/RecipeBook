@@ -258,10 +258,13 @@ function showRecipePage(recipePath) {
 	let mainHtml = `
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10">
-					<h1>${recipe.title}</h1>
+				<div class="col-md-8">
+					<h1 id="recipe-title">${recipe.title}</h1>
 				</div>
-				<div class="col-md-2">
+				<div id="rename-button" class="col-md-2">
+					<div class="edit-button hover-pointer" onclick="showRenameInput()">Rename</div>
+				</div>
+				<div id="edit-button" class="col-md-2">
 					<div class="edit-button hover-pointer" onclick="editRecipe('${recipe.title.replace(/'/g, "\\'")}')">Edit</div>
 				</div>
 			</div><hr>
@@ -389,4 +392,26 @@ function replaceFractions(text) {
 		.replace(/5\/6/g, "⅚")
 		.replace(/5\/8/g, "⅝")
 		.replace(/7\/8/g, "⅞");
+}
+
+function showRenameInput() {
+	document.getElementById("rename-button").innerHTML = `<input id="renamed-title" type="text" style="margin:0.5rem">`;
+	document.getElementById("renamed-title").focus();
+	document.getElementById("renamed-title").setAttribute("value", document.getElementById("recipe-title").innerText);
+	document.getElementById("edit-button").innerHTML = `<div class="edit-button hover-pointer" onclick="renameRecipe()">Rename</div>`;
+}
+
+function renameRecipe() {
+	const oldTitle = document.getElementById("recipe-title").innerText;
+	const newTitle = document.getElementById("renamed-title").value.trim();
+
+	let data = JSON.parse(fs.readFileSync(path.join(recipeDirectory, `${oldTitle}.recipe`).replace(/\\/g, "\\\\")));
+	data.title = newTitle;
+	fs.writeFileSync(path.join(recipeDirectory, `${oldTitle}.recipe`).replace(/\\/g, "\\\\"), JSON.stringify(data, null, "\t"));
+
+	if (!newTitle) return document.getElementById("renamed-title").style.outline = "rgba(230, 0, 0, 0.7) auto 1px";
+
+	fs.renameSync(path.join(recipeDirectory, `${oldTitle}.recipe`).replace(/\\/g, "\\\\"), path.join(recipeDirectory, `${newTitle}.recipe`).replace(/\\/g, "\\\\"));
+
+	showRecipePage(path.join(recipeDirectory, `${newTitle}.recipe`))
 }
