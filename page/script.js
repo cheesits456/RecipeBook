@@ -155,6 +155,7 @@ function showCreate(recipe) {
 		</div>
 	`;
 	document.getElementById("main").innerHTML = mainHtml;
+	document.getElementById("recipe-title").focus();
 
 	if (recipe) {
 		document.getElementById("recipe-title").setAttribute("disabled", "true");
