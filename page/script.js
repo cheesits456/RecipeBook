@@ -64,6 +64,12 @@ function showMain() {
 			<h1>Welcome to RecipeBook</h1>
 			<div>Your digital cookbook</div>
 		</div>
+		<div class="color-selectors">
+			&nbsp;<span class="red-button hover-pointer" onclick="changeColor('red')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="green-button hover-pointer" onclick="changeColor('green')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="blue-button hover-pointer" onclick="changeColor('blue')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="purple-button hover-pointer" onclick="changeColor('purple')">&nbsp; &nbsp; &nbsp; </span>&nbsp;
+		</div>
 		<div class="landing-body">
 			<div class="size-13">Browse recipe categories on the left</div>
 			<div>or</div>
@@ -421,4 +427,44 @@ function renameRecipe() {
 	fs.renameSync(path.join(recipeDirectory, `${oldTitle}.recipe`).replace(/\\/g, "\\\\"), path.join(recipeDirectory, `${newTitle}.recipe`).replace(/\\/g, "\\\\"));
 
 	showRecipePage(path.join(recipeDirectory, `${newTitle}.recipe`))
+}
+
+function changeColor(color) {
+	let root = document.querySelector(":root");
+	if (color === "red") {
+		root.style.setProperty("--background", "#fff5f5");
+		root.style.setProperty("--primary", "#d81515");
+		root.style.setProperty("--primary-transparent", "#d8151522");
+		root.style.setProperty("--secondary", "#961111");
+		root.style.setProperty("--tertiary", "#631111");
+		root.style.setProperty("--quartinary", "#460c0c");
+		root.style.setProperty("--quartinary-transparent", "#460c0c22");
+	} else if (color === "blue") {
+		root.style.setProperty("--background", "#f0f4ff");
+		root.style.setProperty("--primary", "#4f52ba");
+		root.style.setProperty("--primary-transparent", "#4f52ba22");
+		root.style.setProperty("--secondary", "#353577");
+		root.style.setProperty("--tertiary", "#1f2049");
+		root.style.setProperty("--quartinary", "#161a2d");
+		root.style.setProperty("--quartinary-transparent", "#161a2d22");
+
+	} else if (color === "green") {
+		root.style.setProperty("--background", "#f0fff1");
+		root.style.setProperty("--primary", "#45d122");
+		root.style.setProperty("--primary-transparent", "#45d12222");
+		root.style.setProperty("--secondary", "#2b8315");
+		root.style.setProperty("--tertiary", "#0d2e04");
+		root.style.setProperty("--quartinary", "#0a2403");
+		root.style.setProperty("--quartinary-transparent", "#0a240322");
+
+	} else if (color === "purple") {
+		root.style.setProperty("--background", "#f9f0ff");
+		root.style.setProperty("--primary", "#9122d1");
+		root.style.setProperty("--primary-transparent", "#8b22d122");
+		root.style.setProperty("--secondary", "#4e1172");
+		root.style.setProperty("--tertiary", "#30083a");
+		root.style.setProperty("--quartinary", "#1f062e");
+		root.style.setProperty("--quartinary-transparent", "#1f062e22");
+
+	}
 }
