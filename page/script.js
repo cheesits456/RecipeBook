@@ -66,6 +66,7 @@ function showMain() {
 		</div>
 		<div class="color-selectors">
 			&nbsp;<span class="red-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Red" onclick="changeColor('red')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="orange-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Orange" onclick="changeColor('orange')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
 			<span class="green-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Green" onclick="changeColor('green')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
 			<span class="blue-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Blue" onclick="changeColor('blue')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
 			<span class="purple-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Purple" onclick="changeColor('purple')">&nbsp; &nbsp; &nbsp; </span>&nbsp;
@@ -439,15 +440,14 @@ function changeColor(color) {
 		root.style.setProperty("--tertiary", "#631111");
 		root.style.setProperty("--quartinary", "#460c0c");
 		root.style.setProperty("--quartinary-transparent", "#460c0c22");
-	} else if (color === "blue") {
-		root.style.setProperty("--background", "#f0f4ff");
-		root.style.setProperty("--primary", "#4f52ba");
-		root.style.setProperty("--primary-transparent", "#4f52ba22");
-		root.style.setProperty("--secondary", "#353577");
-		root.style.setProperty("--tertiary", "#1f2049");
-		root.style.setProperty("--quartinary", "#161a2d");
-		root.style.setProperty("--quartinary-transparent", "#161a2d22");
-
+	} else if (color === "orange") {
+		root.style.setProperty("--background", "#fffaf5");
+		root.style.setProperty("--primary", "#e77e05");
+		root.style.setProperty("--primary-transparent", "#e77e0522");
+		root.style.setProperty("--secondary", "#aa5b00");
+		root.style.setProperty("--tertiary", "#4b2800");
+		root.style.setProperty("--quartinary", "#381e00");
+		root.style.setProperty("--quartinary-transparent", "#381e0022");
 	} else if (color === "green") {
 		root.style.setProperty("--background", "#f0fff1");
 		root.style.setProperty("--primary", "#45d122");
@@ -456,7 +456,14 @@ function changeColor(color) {
 		root.style.setProperty("--tertiary", "#0d2e04");
 		root.style.setProperty("--quartinary", "#0a2403");
 		root.style.setProperty("--quartinary-transparent", "#0a240322");
-
+	} else if (color === "blue") {
+		root.style.setProperty("--background", "#f0f4ff");
+		root.style.setProperty("--primary", "#4f52ba");
+		root.style.setProperty("--primary-transparent", "#4f52ba22");
+		root.style.setProperty("--secondary", "#353577");
+		root.style.setProperty("--tertiary", "#1f2049");
+		root.style.setProperty("--quartinary", "#161a2d");
+		root.style.setProperty("--quartinary-transparent", "#161a2d22");
 	} else if (color === "purple") {
 		root.style.setProperty("--background", "#f9f0ff");
 		root.style.setProperty("--primary", "#9122d1");

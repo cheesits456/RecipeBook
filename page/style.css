@@ -209,13 +209,18 @@ h2 a {
 	font-size: 10pt;
 }
 
-.red-button, .green-button, .blue-button, .purple-button {
+.red-button, .orange-button, .green-button, .blue-button, .purple-button {
 	border-radius: 100%;
 }
 
 .red-button {
 	border: 2px solid #961111;
 	background-color: #d81515;
+}
+
+.orange-button {
+	border: 2px solid #aa5b00;
+	background-color: #e77e05;
 }
 
 .green-button {
