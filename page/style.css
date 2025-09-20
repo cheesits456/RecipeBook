@@ -1,6 +1,16 @@
 /* Importing Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+:root {
+	--background: #f0f4ff;
+	--primary: #4f52ba;
+	--primary-transparent: #4f52ba22;
+	--secondary: #353577;
+	--tertiary: #1f2049;
+	--quartinary: #161a2d;
+	--quartinary-transparent: #161a2d22;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,7 +20,7 @@
 
 body {
 	min-height: 100vh;
-	background: #F0F4FF;
+	background: var(--background);
 }
 
 ol,
@@ -40,7 +50,7 @@ main {
 }
 
 .landing-header {
-	margin-top: 14%;
+	margin-top: 13%;
 	text-align: center;
 }
 
@@ -48,8 +58,13 @@ main {
 	font-size: 14pt;
 }
 
+.color-selectors {
+	margin-top: 3rem;
+	text-align: center;
+}
+
 .landing-body {
-	margin-top: 4rem;
+	margin-top: 2rem;
 	text-align: center;
 }
 
@@ -79,7 +94,7 @@ h2 a {
 	display: flex;
 	overflow-x: hidden;
 	flex-direction: column;
-	background: #161a2d;
+	background: var(--quartinary);
 	padding: 25px 20px;
 	transition: all 0.4s ease;
 	border-radius: 0 1rem 1rem 0;
@@ -126,7 +141,7 @@ h2 a {
 	height: 1px;
 	transform: scaleX(1);
 	transform: translateY(-50%);
-	background: #4f52ba;
+	background: var(--primary);
 	transform-origin: right;
 	transition-delay: 0.2s;
 }
@@ -158,7 +173,7 @@ h2 a {
 }
 
 .sidebar-links li a:hover {
-	color: #161a2d;
+	color: var(--quartinary);
 	background: #fff;
 	border-radius: 4px;
 }
@@ -172,7 +187,7 @@ h2 a {
 .user-profile {
 	display: flex;
 	align-items: center;
-	color: #161a2d;
+	color: var(--quartinary);
 }
 
 .user-profile img {
@@ -200,7 +215,7 @@ h2 a {
 	right: 0;
 	margin: 1rem;
 	padding: 1rem;
-	background-color: #353577;
+	background-color: var(--secondary);
 	color: white;
 	border-radius: 1rem;
 	justify-content: center;
@@ -209,11 +224,11 @@ h2 a {
 }
 
 .create-button:hover {
-	background-color: #4f52ba;
+	background-color: var(--primary);
 }
 
 .create-button:active {
-	background-color: #353577;
+	background-color: var(--secondary);
 }
 
 .create-button-padding {
@@ -225,18 +240,18 @@ h2 a {
 	font-size: 13pt;
 	font-weight: normal;
 	padding: 0.75rem;
-	background-color: #353577;
+	background-color: var(--secondary);
 	color: white;
 	border-radius: 1rem;
 	box-shadow: 0px 0px 5px 0px black;
 }
 
 .edit-button:hover {
-	background-color: #4f52ba;
+	background-color: var(--primary);
 }
 
 .edit-button:active {
-	background-color: #353577;
+	background-color: var(--secondary);
 }
 
 .form {
@@ -252,7 +267,7 @@ input {
 }
 
 input:focus-visible {
-	outline: #4f52ba auto 1px;
+	outline: var(--primary) auto 1px;
 }
 
 textarea {
@@ -263,7 +278,7 @@ textarea {
 }
 
 textarea:focus-visible {
-	outline: #4f52ba auto 1px;
+	outline: var(--primary) auto 1px;
 }
 
 .height-10 {
@@ -275,18 +290,18 @@ textarea:focus-visible {
 }
 
 .form-check-input:checked {
-	background-color: #4f52ba;
-	border-color: #4f52ba;
+	background-color: var(--primary);
+	border-color: var(--primary);
 }
 
 .form-check-input:focus {
 	box-shadow: none;
-	border: 2px solid #4f52ba;
+	border: 2px solid var(--primary);
 }
 
 .button {
 	width: 100%;
-	background-color: #353577;
+	background-color: var(--secondary);
 	padding: 0.5rem;
 	color: white;
 	text-align: center;
@@ -295,30 +310,30 @@ textarea:focus-visible {
 }
 
 .button:hover {
-	background-color: #4f52ba;
+	background-color: var(--primary);
 	cursor: pointer;
 }
 
 .button:active {
-	background-color: #353577;
+	background-color: var(--secondary);
 }
 
 .card {
 	margin-top: 1rem;
-	background-color: #161a2d22;
+	background-color: var(--quartinary-transparent);
 }
 
 .card-header {
 	font-size: 14pt;
-	background-color: #4f52ba22;
+	background-color: var(--primary-transparent);
 }
 
 .card-header:hover {
-	color: #353577;
+	color: var(--secondary);
 }
 
 .card-header:active {
-	color: #4f52ba;
+	color: var(--primary);
 }
 
 .card-text {
@@ -342,12 +357,12 @@ textarea:focus-visible {
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #1f2049;
+	background: var(--tertiary);
 	border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #4f52ba;
+	background: var(--primary);
 	border-radius: 5px;
 }
