@@ -65,10 +65,10 @@ function showMain() {
 			<div>Your digital cookbook</div>
 		</div>
 		<div class="color-selectors">
-			&nbsp;<span class="red-button hover-pointer" onclick="changeColor('red')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
-			<span class="green-button hover-pointer" onclick="changeColor('green')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
-			<span class="blue-button hover-pointer" onclick="changeColor('blue')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
-			<span class="purple-button hover-pointer" onclick="changeColor('purple')">&nbsp; &nbsp; &nbsp; </span>&nbsp;
+			&nbsp;<span class="red-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Red" onclick="changeColor('red')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="green-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Green" onclick="changeColor('green')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="blue-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Blue" onclick="changeColor('blue')">&nbsp; &nbsp; &nbsp; </span> &nbsp; &nbsp;
+			<span class="purple-button hover-pointer" data-toggle="tooltip" data-placement="top" title="Change to Purple" onclick="changeColor('purple')">&nbsp; &nbsp; &nbsp; </span>&nbsp;
 		</div>
 		<div class="landing-body">
 			<div class="size-13">Browse recipe categories on the left</div>
