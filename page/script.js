@@ -345,18 +345,25 @@ function createNewRecipe() {
 
 	// build data structure
 	let recipe = {
-		title: document.getElementById("recipe-title").value,
+		title: document.getElementById("recipe-title").value.trim(),
 		servings: Number(document.getElementById("recipe-servings").value),
-		mealType: document.getElementById("recipe-types").value.split("\n"),
+		mealType: [],
 		dietaryRestrictions: {
 			vegetarian: document.getElementById("recipe-vegetarian").checked,
 			vegan: document.getElementById("recipe-vegan").checked,
 			glutenFree: document.getElementById("recipe-gluten").checked,
 			dairyFree: document.getElementById("recipe-dairy").checked
 		},
-		ingredients: document.getElementById("recipe-ingredients").value.split("\n"),
-		instructions: document.getElementById("recipe-directions").value.split("\n")
+		ingredients: [],
+		instructions: []
 	};
+	// trim user inputs
+	let recipeTypes = document.getElementById("recipe-types").value.trim().split("\n");
+	for (const recipeType of recipeTypes) recipe.mealType.push(recipeType.trim());
+	let ingredients = document.getElementById("recipe-ingredients").value.trim().split("\n");
+	for (const ingredient of ingredients) recipe.ingredients.push(ingredient.trim());
+	let instructions = document.getElementById("recipe-directions").value.trim().split("\n");
+	for (const instruction of instructions) recipe.instructions.push(instruction.trim());
 
 	// write file and update sidebar
 	const recipePath = path.join(recipeDirectory, `${recipe.title.replace(/'/g, "")}.recipe`).replace(/\\/g, "\\\\");
