@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
+	--text: black;
 	--background: #f0f4ff;
 	--primary: #4f52ba;
 	--primary-transparent: #4f52ba22;
@@ -21,6 +22,7 @@
 body {
 	min-height: 100vh;
 	background: var(--background);
+	color: var(--text);
 }
 
 ol,
@@ -209,7 +211,11 @@ h2 a {
 	font-size: 10pt;
 }
 
-.red-button, .orange-button, .green-button, .blue-button, .purple-button {
+.red-button,
+.orange-button,
+.green-button,
+.blue-button,
+.purple-button {
 	border-radius: 100%;
 }
 
@@ -236,6 +242,66 @@ h2 a {
 .purple-button {
 	border: 2px solid #4e1172;
 	background-color: #9122d1;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: calc(3rem + 2px);
+	height: 1.5rem;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: calc(1.5rem - 8px);
+	width: calc(1.5rem - 8px);
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.slider {
+	background-color: #222;
+}
+
+input:focus+.slider {
+	box-shadow: 0 0 1px #222;
+}
+
+input:checked+.slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }
 
 .create-button {
