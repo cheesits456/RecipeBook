@@ -9,6 +9,7 @@ function createWindow() {
 		height: 600,
 		minWidth: 1200,
 		minHeight: 600,
+		icon: path.join(__dirname, "icon", "icon.png"),
 		webPreferences: {
 			contextIsolation: false,
 			enableRemoteModule: true,
