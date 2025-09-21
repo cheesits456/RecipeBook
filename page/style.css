@@ -290,9 +290,9 @@ input:focus+.slider {
 }
 
 input:checked+.slider:before {
-	-webkit-transform: translateX(26px);
-	-ms-transform: translateX(26px);
-	transform: translateX(26px);
+	-webkit-transform: translateX(calc(1.5rem));
+	-ms-transform: translateX(calc(1.5rem));
+	transform: translateX(calc(1.5rem));
 }
 
 /* Rounded sliders */
@@ -360,10 +360,15 @@ input:checked+.slider:before {
 input {
 	padding: 0.25rem;
 	width: 100%;
+	color: var(--text);
+	background-color: var(--background);
+	outline: none;
+	border: 1px solid rgb(118, 118, 118);
 }
 
 input:focus-visible {
 	outline: var(--primary) auto 1px;
+	border-color: var(--background);
 }
 
 textarea {
@@ -371,10 +376,13 @@ textarea {
 	width: 100%;
 	resize: none;
 	height: 5rem;
+	color: var(--text);
+	background-color: var(--background);
 }
 
 textarea:focus-visible {
 	outline: var(--primary) auto 1px;
+	border-color: var(--background);
 }
 
 .height-10 {
@@ -422,18 +430,20 @@ textarea:focus-visible {
 .card-header {
 	font-size: 14pt;
 	background-color: var(--primary-transparent);
+	color: var(--text);
 }
 
 .card-header:hover {
-	color: var(--secondary);
+	color: var(--primary);
 }
 
 .card-header:active {
-	color: var(--primary);
+	color: var(--secondary);
 }
 
 .card-text {
 	padding: 0.75rem;
+	color: var(--text);
 }
 
 .modal-body {
