@@ -93,6 +93,12 @@ function showCreate(recipe) {
 
 
 
+function showDeleteDialog() {
+	$("#delete-modal").modal("toggle");
+};
+
+
+
 function showMain() {
 	document.title = "RecipeBook";
 	document.getElementById("create-button").style.display = "flex";
