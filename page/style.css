@@ -82,6 +82,11 @@ h2 a {
 	text-decoration: none;
 }
 
+.search-box {
+	padding-top: 0.5rem;
+	margin-bottom: 0px !important;
+}
+
 .form-control:focus {
 	box-shadow: none;
 	border: 1px solid white;
