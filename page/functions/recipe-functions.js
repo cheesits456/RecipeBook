@@ -43,6 +43,17 @@ function createNewRecipe() {
 
 
 
+function deleteRecipe() {
+	const title = document.getElementById("recipe-title").innerText;
+	fs.unlinkSync(path.join(recipeDirectory, `${title}.recipe`).replace(/\\/g, "\\\\"));
+	$("#delete-modal").modal("toggle");
+	updateSidebar();
+	showMain();
+	$("#deleted-modal").modal("toggle");
+};
+
+
+
 function editRecipe(title) {
 	const data = JSON.parse(fs.readFileSync(path.join(recipeDirectory, `${title}.recipe`)));
 	showCreate(data);
