@@ -142,7 +142,7 @@ function showRecipePage(recipePath) {
 	let mainHtml = `
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-7">
 					<h1 id="recipe-title">${recipe.title}</h1>
 				</div>
 				<div id="rename-button" class="col-md-2">
@@ -150,6 +150,9 @@ function showRecipePage(recipePath) {
 				</div>
 				<div id="edit-button" class="col-md-2">
 					<div class="edit-button hover-pointer" onclick="editRecipe('${recipe.title.replace(/'/g, "\\'")}')">Edit</div>
+				</div>
+				<div id="delete-button" class="col-md-1">
+					<div class="edit-button delete-button bold hover-pointer" onclick="showDeleteDialog()">⊖</div>
 				</div>
 			</div><hr>
 			<div class="row">

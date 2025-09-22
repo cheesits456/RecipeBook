@@ -43,7 +43,7 @@ ul {
 }
 
 .bold {
-	font-weight: bold;
+	font-weight: bold !important;
 }
 
 main {
@@ -361,6 +361,18 @@ input:checked+.slider:before {
 
 .edit-button:active {
 	background-color: var(--secondary);
+}
+
+.delete-button {
+	background-color: #d81515;
+}
+
+.delete-button:hover {
+	background-color: red;
+}
+
+.delete-button:active {
+	background-color: #d81515;
 }
 
 .form {
