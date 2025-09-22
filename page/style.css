@@ -256,8 +256,8 @@ h2 a {
 .switch {
 	position: relative;
 	display: inline-block;
-	width: calc(3rem + 2px);
-	height: 1.5rem;
+	width: 3rem;
+	height: 1.4rem;
 }
 
 .switch input {
@@ -281,8 +281,8 @@ h2 a {
 .slider:before {
 	position: absolute;
 	content: "";
-	height: calc(1.5rem - 8px);
-	width: calc(1.5rem - 8px);
+	height: calc(1.4rem - 8px);
+	width: calc(1.4rem - 8px);
 	left: 4px;
 	bottom: 4px;
 	background-color: white;
