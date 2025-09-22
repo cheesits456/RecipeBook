@@ -290,12 +290,15 @@ function search() {
 
 		let match = false;
 		if (recipe.title.toLowerCase().includes(query.toLowerCase())) match = true;
+		for (const mealType of recipe.mealType) {
+			if (mealType.toLowerCase().includes(query.toLowerCase())) match = true;
+		};
 		for (const ingredient of recipe.ingredients) {
 			if (ingredient.toLowerCase().includes(query.toLowerCase())) match = true;
-		}
+		};
 		for (const instruction of recipe.instructions) {
 			if (instruction.toLowerCase().includes(query.toLowerCase())) match = true;
-		}
+		};
 
 		if (match) {
 			let dietaryRestrictions = [];
