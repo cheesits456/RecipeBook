@@ -223,7 +223,7 @@ function showRecipes(mealType) {
 		};
 
 
-		if (match === true) {
+		if (match) {
 			let dietaryRestrictions = [];
 
 			if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
