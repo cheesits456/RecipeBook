@@ -14,7 +14,7 @@ if (fs.existsSync(path.join(recipeDirectory, "RecipeBook.config"))) {
 	try {
 		config = JSON.parse(fs.readFileSync(path.join(recipeDirectory, "RecipeBook.config")))
 	} catch { };
-}
+};
 
 // Set variable for whether darkmode is enabled
 let darkmode = config.darkmode || false;

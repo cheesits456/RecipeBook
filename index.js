@@ -15,7 +15,7 @@ function createWindow() {
 			enableRemoteModule: true,
 			nodeIntegration: true
 		}
-	})
+	});
 
 	window.removeMenu();
 	window.loadFile(path.join("page", "index.html"));
