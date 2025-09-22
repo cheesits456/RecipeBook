@@ -8,51 +8,57 @@ function changeColor(color) {
 	};
 	config.color = color;
 	fs.writeFileSync(path.join(recipeDirectory, "RecipeBook.config"), JSON.stringify(config, null, "\t"));
-	if (color === "red") {
-		root.style.setProperty("--background", darkmode ? "#3f3b3b" : "#fff5f5");
-		root.style.setProperty("--text", darkmode ? "#eee" : "black");
-		root.style.setProperty("--primary", "#d81515");
-		root.style.setProperty("--primary-transparent", "#d8151522");
-		root.style.setProperty("--secondary", "#961111");
-		root.style.setProperty("--tertiary", "#631111");
-		root.style.setProperty("--quartinary", "#460c0c");
-		root.style.setProperty("--quartinary-transparent", "#460c0c22");
-	} else if (color === "orange") {
-		root.style.setProperty("--background", darkmode ? "#3f3e3b" : "#fffaf5");
-		root.style.setProperty("--text", darkmode ? "#eee" : "black");
-		root.style.setProperty("--primary", "#e77e05");
-		root.style.setProperty("--primary-transparent", "#e77e0522");
-		root.style.setProperty("--secondary", "#aa5b00");
-		root.style.setProperty("--tertiary", "#4b2800");
-		root.style.setProperty("--quartinary", "#381e00");
-		root.style.setProperty("--quartinary-transparent", "#381e0022");
-	} else if (color === "green") {
-		root.style.setProperty("--background", darkmode ? "#3b3f3b" : "#f0fff1");
-		root.style.setProperty("--text", darkmode ? "#eee" : "black");
-		root.style.setProperty("--primary", "#45d122");
-		root.style.setProperty("--primary-transparent", "#45d12222");
-		root.style.setProperty("--secondary", "#2b8315");
-		root.style.setProperty("--tertiary", "#0d2e04");
-		root.style.setProperty("--quartinary", "#0a2403");
-		root.style.setProperty("--quartinary-transparent", "#0a240322");
-	} else if (color === "blue") {
-		root.style.setProperty("--background", darkmode ? "#3b3d3f" : "#f0f4ff");
-		root.style.setProperty("--text", darkmode ? "#eee" : "black");
-		root.style.setProperty("--primary", "#4f52ba");
-		root.style.setProperty("--primary-transparent", "#4f52ba22");
-		root.style.setProperty("--secondary", "#353577");
-		root.style.setProperty("--tertiary", "#1f2049");
-		root.style.setProperty("--quartinary", "#161a2d");
-		root.style.setProperty("--quartinary-transparent", "#161a2d22");
-	} else if (color === "purple") {
-		root.style.setProperty("--background", darkmode ? "#3e3b3f" : "#f9f0ff");
-		root.style.setProperty("--text", darkmode ? "#eee" : "black");
-		root.style.setProperty("--primary", "#9122d1");
-		root.style.setProperty("--primary-transparent", "#8b22d122");
-		root.style.setProperty("--secondary", "#4e1172");
-		root.style.setProperty("--tertiary", "#30083a");
-		root.style.setProperty("--quartinary", "#1f062e");
-		root.style.setProperty("--quartinary-transparent", "#1f062e22");
+	switch (color) {
+		case "red":
+			root.style.setProperty("--background", darkmode ? "#3f3b3b" : "#fff5f5");
+			root.style.setProperty("--text", darkmode ? "#eee" : "black");
+			root.style.setProperty("--primary", "#d81515");
+			root.style.setProperty("--primary-transparent", "#d8151522");
+			root.style.setProperty("--secondary", "#961111");
+			root.style.setProperty("--tertiary", "#631111");
+			root.style.setProperty("--quartinary", "#460c0c");
+			root.style.setProperty("--quartinary-transparent", "#460c0c22");
+			break;
+		case "orange":
+			root.style.setProperty("--background", darkmode ? "#3f3e3b" : "#fffaf5");
+			root.style.setProperty("--text", darkmode ? "#eee" : "black");
+			root.style.setProperty("--primary", "#e77e05");
+			root.style.setProperty("--primary-transparent", "#e77e0522");
+			root.style.setProperty("--secondary", "#aa5b00");
+			root.style.setProperty("--tertiary", "#4b2800");
+			root.style.setProperty("--quartinary", "#381e00");
+			root.style.setProperty("--quartinary-transparent", "#381e0022");
+			break;
+		case "green":
+			root.style.setProperty("--background", darkmode ? "#3b3f3b" : "#f0fff1");
+			root.style.setProperty("--text", darkmode ? "#eee" : "black");
+			root.style.setProperty("--primary", "#45d122");
+			root.style.setProperty("--primary-transparent", "#45d12222");
+			root.style.setProperty("--secondary", "#2b8315");
+			root.style.setProperty("--tertiary", "#0d2e04");
+			root.style.setProperty("--quartinary", "#0a2403");
+			root.style.setProperty("--quartinary-transparent", "#0a240322");
+			break;
+		case "blue":
+			root.style.setProperty("--background", darkmode ? "#3b3d3f" : "#f0f4ff");
+			root.style.setProperty("--text", darkmode ? "#eee" : "black");
+			root.style.setProperty("--primary", "#4f52ba");
+			root.style.setProperty("--primary-transparent", "#4f52ba22");
+			root.style.setProperty("--secondary", "#353577");
+			root.style.setProperty("--tertiary", "#1f2049");
+			root.style.setProperty("--quartinary", "#161a2d");
+			root.style.setProperty("--quartinary-transparent", "#161a2d22");
+			break;
+		case "purple":
+			root.style.setProperty("--background", darkmode ? "#3e3b3f" : "#f9f0ff");
+			root.style.setProperty("--text", darkmode ? "#eee" : "black");
+			root.style.setProperty("--primary", "#9122d1");
+			root.style.setProperty("--primary-transparent", "#8b22d122");
+			root.style.setProperty("--secondary", "#4e1172");
+			root.style.setProperty("--tertiary", "#30083a");
+			root.style.setProperty("--quartinary", "#1f062e");
+			root.style.setProperty("--quartinary-transparent", "#1f062e22");
+			break;
 	};
 };
 
