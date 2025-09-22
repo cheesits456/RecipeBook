@@ -464,15 +464,15 @@ textarea:focus-visible {
 }
 
 ::-webkit-scrollbar {
-	width: 5px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
 	background: var(--tertiary);
-	border-radius: 5px;
+	border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: var(--primary);
-	border-radius: 5px;
+	border-radius: 6px;
 }
