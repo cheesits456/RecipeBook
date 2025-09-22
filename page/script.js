@@ -262,6 +262,80 @@ function showRecipes(mealType) {
 };
 
 
+function search() {
+	const query = document.getElementById("search-query").value;
+	if (!query) return;
+
+	document.getElementById("create-button").style.display = "none";
+	document.title = `RecipeBook - ${query}`
+
+	let mainHtml = `
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>${query}</h1>
+					<hr>
+				</div>
+			</div>
+	`;
+
+	const fileNames = fs.readdirSync(recipeDirectory);
+	for (const fileName of fileNames) {
+		if (!fileName.endsWith(".recipe")) continue;
+		let recipe = {};
+		try {
+			recipe = JSON.parse(fs.readFileSync(path.join(recipeDirectory, fileName)));
+		} catch { };
+		if (!recipe.title) continue;
+
+		let match = false;
+		if (recipe.title.toLowerCase().includes(query.toLowerCase())) match = true;
+		for (const ingredient of recipe.ingredients) {
+			if (ingredient.toLowerCase().includes(query.toLowerCase())) match = true;
+		}
+		for (const instruction of recipe.instructions) {
+			if (instruction.toLowerCase().includes(query.toLowerCase())) match = true;
+		}
+
+		if (match) {
+			let dietaryRestrictions = [];
+
+			if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
+			if (recipe.dietaryRestrictions.vegan) dietaryRestrictions.push("Vegan");
+			if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
+			if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
+
+			dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "";
+
+			mainHtml += `
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header weight-600 hover-pointer" onclick="showRecipePage('${path.join(recipeDirectory, fileName).replace(/\\/g, "\\\\")}')">${recipe.title}</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="card-text">${recipe.servings} serving${recipe.servings === 1 ? "" : "s"}</div>
+									</div>
+									<div class="col-md-6">
+										<div class="card-text">${dietaryRestrictions}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
+		};
+
+	}
+
+	mainHtml += `</div>`;
+	document.getElementById("main").innerHTML = mainHtml;
+
+}
+
+
 function showRecipePage(recipePath) {
 	document.getElementById("create-button").style.display = "none";
 
