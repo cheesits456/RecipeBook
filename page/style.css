@@ -304,7 +304,6 @@ input:checked+.slider:before {
 	transform: translateX(calc(1.5rem));
 }
 
-/* Rounded sliders */
 .slider.round {
 	border-radius: 34px;
 }
@@ -464,19 +463,15 @@ textarea:focus-visible {
 	border-top: none;
 }
 
-
-/* width */
 ::-webkit-scrollbar {
 	width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
 	background: var(--tertiary);
 	border-radius: 5px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
 	background: var(--primary);
 	border-radius: 5px;
