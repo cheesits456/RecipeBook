@@ -299,16 +299,17 @@ function search() {
 		for (const instruction of recipe.instructions) {
 			if (instruction.toLowerCase().includes(query.toLowerCase())) match = true;
 		};
+		let dietaryRestrictions = [];
+		if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
+		if (recipe.dietaryRestrictions.vegan) dietaryRestrictions.push("Vegan");
+		if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
+		if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
+		for (const restriction of dietaryRestrictions) {
+			if (restriction.toLowerCase() === query.toLowerCase()) match = true; 
+		}
+		dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "";
 
 		if (match) {
-			let dietaryRestrictions = [];
-
-			if (recipe.dietaryRestrictions.vegetarian) dietaryRestrictions.push("Vegetarian");
-			if (recipe.dietaryRestrictions.vegan) dietaryRestrictions.push("Vegan");
-			if (recipe.dietaryRestrictions.dairyFree) dietaryRestrictions.push("Dairy Free");
-			if (recipe.dietaryRestrictions.glutenFree) dietaryRestrictions.push("Gluten Free");
-
-			dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "";
 
 			mainHtml += `
 				<div class="row">
