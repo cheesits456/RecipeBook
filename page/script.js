@@ -29,3 +29,16 @@ changeColor(config.color || "blue");
 
 // Display the landing page
 showMain();
+
+// Enter keypress events
+document.addEventListener("keydown", event => {
+	if (event.key !== "Enter") return;
+	switch (document.activeElement.id) {
+		case "renamed-title":
+			renameRecipe();
+			break;
+		case "search-query":
+			search();
+			break;
+	};
+});
