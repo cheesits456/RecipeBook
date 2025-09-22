@@ -84,7 +84,7 @@ h2 a {
 
 .form-control:focus {
 	box-shadow: none;
-	border: 1px solid none;
+	border: 1px solid white;
 }
 
 .btn {
