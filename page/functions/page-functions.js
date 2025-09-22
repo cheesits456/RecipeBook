@@ -327,6 +327,15 @@ function showRecipes(mealType) {
 
 
 
+function showRenameInput() {
+	document.getElementById("rename-button").innerHTML = `<input id="renamed-title" type="text" style="margin:0.5rem">`;
+	document.getElementById("renamed-title").focus();
+	document.getElementById("renamed-title").setAttribute("value", document.getElementById("recipe-title").innerText);
+	document.getElementById("edit-button").innerHTML = `<div class="edit-button hover-pointer" onclick="renameRecipe()">Rename</div>`;
+};
+
+
+
 function updateSidebar() {
 	const fileNames = fs.readdirSync(recipeDirectory);
 	let mealTypes = []
