@@ -14,7 +14,11 @@
 		<div class="sidebar-header">
 			<h2 class="hover-default"><a href="#" onclick="showMain()">RecipeBook</a></h2>
 		</div>
-		<ul id="mealTypes" class="sidebar-links"></ul>
+		<div class="input-group mb-3" style="padding-top: 0.5rem; margin-bottom: 0px !important">
+			<input id="search-query" type="text" class="form-control" aria-describedby="search-button">
+			<button id="search-button" class="btn btn-outline-secondary" type="button" onclick="search()">Search</button>
+		</div>
+		<ul id="mealTypes" class="sidebar-links" style="margin-bottom: 0px"></ul>
 		<br>
 		<div class="user-account">
 			<div class="user-profile">
@@ -31,8 +35,8 @@
 		<img src="images/plus.png" height="20px"> &nbsp; Create New Recipe
 	</div>
 
-	<div class="modal fade" id="saved-modal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal fade" id="saved-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-body">Recipe saved successfully</div>
