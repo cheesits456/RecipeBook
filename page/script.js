@@ -263,7 +263,7 @@ function showRecipes(mealType) {
 
 
 function search() {
-	const query = document.getElementById("search-query").value;
+	const query = document.getElementById("search-query").value.trim();
 	if (!query) return;
 
 	document.getElementById("create-button").style.display = "none";
