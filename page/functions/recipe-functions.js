@@ -28,11 +28,11 @@ function createNewRecipe() {
 		ingredients: [],
 		instructions: []
 	};
-	let recipeTypes = document.getElementById("recipe-types").value.trim().split("\n");
+	let recipeTypes = removeStringFromArray("", document.getElementById("recipe-types").value.trim().split("\n"));
 	for (const recipeType of recipeTypes) recipe.mealType.push(recipeType.trim());
-	let ingredients = document.getElementById("recipe-ingredients").value.trim().split("\n");
+	let ingredients = removeStringFromArray("", document.getElementById("recipe-ingredients").value.trim().split("\n"));
 	for (const ingredient of ingredients) recipe.ingredients.push(ingredient.trim());
-	let instructions = document.getElementById("recipe-directions").value.trim().split("\n");
+	let instructions = removeStringFromArray("", document.getElementById("recipe-directions").value.trim().split("\n"));
 	for (const instruction of instructions) recipe.instructions.push(instruction.trim());
 	const recipePath = path.join(recipeDirectory, `${recipe.title.replace(/'/g, "")}.recipe`).replace(/\\/g, "\\\\");
 	fs.writeFileSync(recipePath, JSON.stringify(recipe, null, "\t"));
