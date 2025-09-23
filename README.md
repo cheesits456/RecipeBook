@@ -1,5 +1,7 @@
 # RecipeBook
 
+A software solution to having a bunch of unorganised recipes written down on paper
+
 ## Download
 
 Compiled binaries available for Windows and Linux at on the <a href="https://github.com/cheesits456/RecipeBook/releases">Releases</a> page
