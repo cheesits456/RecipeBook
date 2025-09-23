@@ -5,7 +5,7 @@ rm ./dist/zipped/* || echo
 
 echo "COMPILATION:"
 # Compile program
-electron-packager . RecipeBook --overwrite --out ./dist --platform linux,win32 --icon ./icon/icon.ico && {
+electron-packager . RecipeBook --overwrite --out ./dist --platform linux,win32 --icon ./icon/icon.ico --ignore ".+\\.sh" --ignore "compilers" && {
 	echo
 	echo "PROCESSING:"
 	./compilers/process-output.sh && {
