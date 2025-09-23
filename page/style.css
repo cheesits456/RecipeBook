@@ -396,6 +396,11 @@ input:focus-visible {
 	border-color: var(--background);
 }
 
+input:disabled {
+	border-color: rgba(118, 118, 118, 0.3);
+	color: light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+}
+
 textarea {
 	padding: 0.25rem;
 	width: 100%;
