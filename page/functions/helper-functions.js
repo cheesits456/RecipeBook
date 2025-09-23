@@ -4,6 +4,16 @@ function capitalize(string) {
 
 
 
+function removeStringFromArray(string, array) {
+	let returnValue = [];
+	for (const item of array) {
+		if (item != string) returnValue.push(item);
+	};
+	return returnValue;
+};
+
+
+
 function replaceFractions(text) {
 	return text
 		.replace(/1\/2/g, "½")
