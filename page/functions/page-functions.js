@@ -141,7 +141,7 @@ function showRecipePage(recipePath) {
 	dietaryRestrictions = dietaryRestrictions.length ? dietaryRestrictions.join(", ") : "None";
 	let mainHtml = `
 		<div class="container">
-			<div class="row">
+			<div class="row align-items-center">
 				<div class="col-md-7">
 					<h1 id="recipe-title">${recipe.title}</h1>
 				</div>
