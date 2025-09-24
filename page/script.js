@@ -3,6 +3,8 @@ const path = require("path");
 
 const os = require("os");
 
+let page = "main";
+
 process.chdir(__dirname);
 
 // Set variable for recipe directory and create the folder if it doesn't exist

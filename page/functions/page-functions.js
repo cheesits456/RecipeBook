@@ -1,4 +1,5 @@
 function showCreate(recipe) {
+	page = "create";
 	document.title = `RecipeBook - ${recipe ? "Edit" : "Create New"} Recipe`;
 	document.getElementById("create-button").style.display = "none";
 	const mainHtml = `
@@ -100,6 +101,7 @@ function showDeleteDialog() {
 
 
 function showMain() {
+	page = "main";
 	document.title = "RecipeBook";
 	document.getElementById("create-button").style.display = "flex";
 	const mainHtml = `
@@ -130,6 +132,7 @@ function showMain() {
 
 
 function showRecipePage(recipePath) {
+	page = "recipe"
 	document.getElementById("create-button").style.display = "none";
 	const recipe = JSON.parse(fs.readFileSync(recipePath));
 	document.title = `RecipeBook - ${recipe.title}`
@@ -209,6 +212,7 @@ function showRecipePage(recipePath) {
 
 
 function showRecipes(mealType) {
+	page = "recipes";
 	document.title = `RecipeBook - ${mealType}`
 	document.getElementById("create-button").style.display = "none";
 	let mainHtml = `
@@ -267,6 +271,7 @@ function showRecipes(mealType) {
 
 
 function showRenameInput() {
+	page = "rename";
 	document.getElementById("rename-button").innerHTML = `<input id="renamed-title" type="text" style="margin:0.5rem">`;
 	document.getElementById("renamed-title").focus();
 	document.getElementById("renamed-title").setAttribute("value", document.getElementById("recipe-title").innerText);
