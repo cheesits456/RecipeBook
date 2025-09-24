@@ -3,6 +3,7 @@ const path = require("path");
 
 const os = require("os");
 
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
 let page = "main";
 
 process.chdir(__dirname);
@@ -34,13 +35,16 @@ showMain();
 
 // Enter keypress events
 document.addEventListener("keydown", event => {
-	if (event.key !== "Enter") return;
-	switch (document.activeElement.id) {
-		case "renamed-title":
-			renameRecipe();
-			break;
-		case "search-query":
-			search();
-			break;
-	};
+	if (page !== "create" && page !== "rename" && alphabet.includes(event.key.toLowerCase())) {
+		document.getElementById("search-query").focus();
+	} else if (event.key === "Enter") {
+		switch (document.activeElement.id) {
+			case "renamed-title":
+				renameRecipe();
+				break;
+			case "search-query":
+				search();
+				break;
+		};
+	}
 });
