@@ -8,9 +8,9 @@ Compiled binaries available for Windows and Linux at on the <a href="https://git
 
 ## Examples
 
-<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/7aa66d62-8a4a-4ddb-9570-6f2b3ced4720" />
-<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/07af1cec-9779-4833-98dc-9f5a251576b9" />
-<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/f4b0518b-1215-4ebb-90ae-58c6260878a6" />
+<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/3526cc0b-b82a-4dc6-bf06-f42ffb74a8e8" />
+<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/9a47a292-46e3-4c62-9a61-e34cf0a9eaa1" />
+<img width="1214" height="690" alt="image" src="https://github.com/user-attachments/assets/6c4dc9a4-8cd7-40cd-b087-16424fe9ba16" />
 
 ## Running from build environment and compiling yourself
 
